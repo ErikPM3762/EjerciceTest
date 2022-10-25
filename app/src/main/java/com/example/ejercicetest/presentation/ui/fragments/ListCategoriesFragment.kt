@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ejercicetest.R
 import com.example.ejercicetest.databinding.FragmentListCategoriesBinding
 import com.example.ejercicetest.presentation.common.viewBinding
 import com.example.ejercicetest.presentation.ui.ChuckNorrisViewModel
 import com.example.ejercicetest.presentation.ui.fragments.adapter.ListCategoriesAdapter
+import com.example.ejercicetest.presentation.ui.fragments.listener.OpenListListener
 import com.example.ejercicetest.utils.Event
 
 
@@ -24,15 +26,17 @@ class ListCategoriesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = ListCategoriesAdapter(requireContext())
-
+        adapter = ListCategoriesAdapter(requireContext(),object : OpenListListener {
+            override fun open(url: String?) {
+                findNavController().navigate(ListCategoriesFragmentDirections.actionListCategoriesFragmentToDetailCategoriesFragment(url))
+            }
+        })
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_list_categories, container, false)
     }
 

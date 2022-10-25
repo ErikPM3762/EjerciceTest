@@ -18,5 +18,12 @@
         android:id="@+id/detailCategoriesFragment"
         android:name="com.example.ejercicetest.presentation.ui.fragments.DetailCategoriesFragment"
         android:label="fragment_detail_categories"
-        tools:layout="@layout/fragment_detail_categories" />
+        tools:layout="@layout/fragment_detail_categories">
+    <argument
+        android:name="idCategories"
+        app:argType="string"
+        app:nullable="true"
+        android:defaultValue="null"
+        />
+    </fragment>
 </navigation>

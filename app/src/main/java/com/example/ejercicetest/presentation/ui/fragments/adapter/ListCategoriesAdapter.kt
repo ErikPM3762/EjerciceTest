@@ -8,11 +8,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ejercicetest.R
+import com.example.ejercicetest.presentation.ui.fragments.listener.OpenListListener
 
-class ListCategoriesAdapter(context:Context) :RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class ListCategoriesAdapter(context:Context, listener: OpenListListener) :RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     var data : ArrayList<String> = arrayListOf()
     val TYPE_VIEW : Int = 0
+    lateinit var context:Context
+    lateinit  var listener : OpenListListener
+
+    init {
+        this.context = context
+        this.listener = listener
+    }
 
 
 

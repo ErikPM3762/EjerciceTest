@@ -23,7 +23,7 @@ class App : Application() {
         applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(applicationContext))
             .dataSourceModule(DataSourceModule())
-            .networkModule(NetworkModule("https://api.chucknorris.io/jokes/"))
+            .networkModule(NetworkModule("https://api.chucknorris.io/"))
             .build()
     }
 }

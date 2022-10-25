@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ServiceApi {
 
-    @GET("/categories")
+    @GET("jokes/categories")
     fun getListCategories(): Single<Response<ArrayList<String>>>
 
     @GET("/search?query=false")
