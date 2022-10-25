@@ -27,7 +27,7 @@ class ListCategoriesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = ListCategoriesAdapter(requireContext(),object : OpenListListener {
-            override fun open(url: String?) {
+            override fun open(url: String) {
                 findNavController().navigate(ListCategoriesFragmentDirections.actionListCategoriesFragmentToDetailCategoriesFragment(url))
             }
         })

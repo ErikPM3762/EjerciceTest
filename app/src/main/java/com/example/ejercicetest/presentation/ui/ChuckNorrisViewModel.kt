@@ -3,6 +3,7 @@ package com.example.ejercicetest.presentation.ui
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.ejercicetest.data.model.DetailsInfo
 import com.example.ejercicetest.data.model.ListDetailsResponse
 import com.example.ejercicetest.domain.repository.ChuckNorrisRepository
 import com.example.ejercicetest.utils.Event

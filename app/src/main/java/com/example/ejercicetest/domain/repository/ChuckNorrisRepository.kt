@@ -1,5 +1,6 @@
 package com.example.ejercicetest.domain.repository
 
+import com.example.ejercicetest.data.model.DetailsInfo
 import com.example.ejercicetest.data.model.ListDetailsResponse
 import io.reactivex.Single
 

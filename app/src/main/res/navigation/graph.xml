@@ -22,8 +22,6 @@
     <argument
         android:name="idCategories"
         app:argType="string"
-        app:nullable="true"
-        android:defaultValue="null"
         />
     </fragment>
 </navigation>

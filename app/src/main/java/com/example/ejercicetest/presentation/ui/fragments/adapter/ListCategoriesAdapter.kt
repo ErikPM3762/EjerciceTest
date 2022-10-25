@@ -16,6 +16,7 @@ class ListCategoriesAdapter(context:Context, listener: OpenListListener) :Recycl
     val TYPE_VIEW : Int = 0
     lateinit var context:Context
     lateinit  var listener : OpenListListener
+    lateinit var categories:ArrayList<String>
 
     init {
         this.context = context
@@ -37,7 +38,8 @@ class ListCategoriesAdapter(context:Context, listener: OpenListListener) :Recycl
             TYPE_VIEW -> {
                 val n : CategoriesViewHolder = holder as CategoriesViewHolder
                 n.categorie.setText(data.get(position))
-                n.categorie.setOnClickListener {  }
+                n.categorie.setOnClickListener {
+                    listener.open(data.get(position)) }
             }
         }
     }
