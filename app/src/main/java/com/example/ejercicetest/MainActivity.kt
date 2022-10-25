@@ -1,18 +1,40 @@
 package com.example.ejercicetest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ejercicetest.databinding.ActivityMainBinding
+import androidx.activity.viewModels
+import com.example.ejercicetest.domain.repository.ChuckNorrisRepository
 import com.example.ejercicetest.presentation.base.BaseViewModelActivity
+import com.example.ejercicetest.presentation.di.DaggerActivitiesComponent
 import com.example.ejercicetest.presentation.ui.ChuckNorrisViewModel
+import javax.inject.Inject
 
-class MainActivity(override val baseViewModel: ChuckNorrisViewModel) : BaseViewModelActivity<ChuckNorrisViewModel>() {
+class MainActivity : BaseViewModelActivity<ChuckNorrisViewModel>() {
 
-    private lateinit var binding: ActivityMainBinding
+    override val baseViewModel: ChuckNorrisViewModel
+        get() = chuckViewModel
+
+
+    @Inject
+    lateinit var core: ChuckNorrisRepository
+    private val chuckViewModel by viewModels<ChuckNorrisViewModel> {
+        com.example.ejercicetest.presentation.di.viewModelFactory(
+            core,
+            this,
+            intent.extras
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        initInjection()
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_main)
+
+    }
+
+    private fun initInjection() {
+        val component = DaggerActivitiesComponent.builder()
+            .applicationComponent(App.applicationComponent)
+            .build()
+        component.inject(this)
     }
 }

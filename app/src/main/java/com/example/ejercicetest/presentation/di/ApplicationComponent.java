@@ -11,7 +11,7 @@ import javax.inject.Singleton;
 import dagger.Component;
 
 @Singleton
-@Component(modules = {NetworkModule.class, ApplicationModule.class, DataSourceModule.class})
+@Component(modules = {ApplicationModule.class, DataSourceModule.class, NetworkModule.class})
 public interface ApplicationComponent {
     ChuckNorrisRepository provideChuckNorriesRepository();
 }
